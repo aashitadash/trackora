@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Trackora Demo</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin-right: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Trackora Demo Website</h1>
+
+  <button>
+    Buy Now
+  </button>
+
+  <button>
+    Pricing
+  </button>
+
+  <button>
+    Upgrade Plan
+  </button>
+
+  <script src="../tracker-sdk/tracker.js"></script>
+
+  <script>
+    Trackora.init({
+      apiUrl: "http://localhost:8000"
+    });
+  </script>
+
+</body>
+
+</html>
