@@ -223,15 +223,18 @@ Include the SDK in any webpage:
 
 ## Dashboard Overview
 
-*Add screenshot here*
+<img width="959" height="449" alt="image" src="https://github.com/user-attachments/assets/b304a11f-500b-4622-a305-cabfd5ef93c4" />
+
 
 ## Sessions View
 
-*Add screenshot here*
+<img width="957" height="376" alt="image" src="https://github.com/user-attachments/assets/966e576b-846e-481b-91b8-9cbb815b2870" />
+
 
 ## Heatmap View
 
-*Add screenshot here*
+<img width="817" height="399" alt="image" src="https://github.com/user-attachments/assets/2473362c-61f1-494c-8778-7db95e1b236a" />
+
 
 ---
 
