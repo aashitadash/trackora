@@ -1,16 +1,261 @@
-# React + Vite
+# Trackora
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight full-stack analytics platform inspired by Hotjar and PostHog, built to track user interactions, visualize session journeys, and generate real-time click heatmaps.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+Trackora is a custom-built analytics system that captures user behavior on webpages using a reusable JavaScript tracking SDK. The platform stores events in MongoDB, aggregates sessions, and visualizes analytics data through a modern React dashboard.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project was developed as part of a Full Stack Engineer technical assignment.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Features
+
+## Event Tracking SDK
+
+* Tracks page views automatically
+* Tracks click events automatically
+* Stores persistent session IDs using localStorage
+* Captures:
+
+  * event type
+  * timestamp
+  * page URL
+  * click coordinates
+  * viewport dimensions
+  * user agent
+* Sends events to backend APIs in real time
+
+---
+
+## Backend APIs
+
+### Event APIs
+
+| Endpoint                   | Method | Description                                |
+| -------------------------- | ------ | ------------------------------------------ |
+| `/api/events`              | POST   | Receive and store events                   |
+| `/api/sessions`            | GET    | Fetch sessions with event counts           |
+| `/api/sessions/:sessionId` | GET    | Fetch ordered events for a session         |
+| `/api/heatmap`             | GET    | Fetch click data for heatmap visualization |
+
+---
+
+## Dashboard Features
+
+### Overview Dashboard
+
+* Analytics overview cards
+* Session statistics
+* Activity visualizations
+* Responsive SaaS-style UI
+
+### Sessions View
+
+* Lists all tracked sessions
+* Displays total event counts
+* Shows last activity timestamp
+* Opens detailed user journey modal
+* Displays ordered event timeline
+
+### Heatmap View
+
+* Displays real click positions visually
+* MongoDB-backed click visualization
+* Heatmap overlay on webpage preview
+* Interactive analytics UI
+
+---
+
+# Tech Stack
+
+## Frontend
+
+* React
+* Vite
+* Tailwind CSS
+* Axios
+* Lucide React
+
+## Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+
+## Database
+
+* MongoDB Atlas
+
+## Deployment
+
+* GitHub Pages (Frontend)
+* Render (Backend)
+
+---
+
+# Project Structure
+
+```bash
+trackora/
+│
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── server.js
+│
+├── dashboard/
+│   ├── src/
+│   └── public/
+│
+├── tracker-sdk/
+│   └── tracker.js
+│
+├── demo-site/
+│   └── index.html
+│
+└── README.md
+```
+
+---
+
+# Database Schema
+
+Each event document contains:
+
+```json
+{
+  "session_id": "uuid",
+  "event_type": "click",
+  "page_url": "/pricing",
+  "timestamp": "ISO Date",
+  "coordinates": {
+    "x": 120,
+    "y": 450
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "user_agent": "Chrome"
+}
+```
+
+---
+
+# Setup Instructions
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/AashitaDash/trackora.git
+```
+
+---
+
+## 2. Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create `.env`
+
+```env
+MONGO_URI=your_mongodb_uri
+PORT=8000
+```
+
+Run backend:
+
+```bash
+node ./src/server.js
+```
+
+---
+
+## 3. Frontend Setup
+
+```bash
+cd dashboard
+npm install
+npm run dev
+```
+
+---
+
+## 4. Demo Website
+
+Open:
+
+```bash
+demo-site/index.html
+```
+
+OR use Live Server in VS Code.
+
+---
+
+# Tracking SDK Usage
+
+Include the SDK in any webpage:
+
+```html
+<script src="tracker.js"></script>
+
+<script>
+  Trackora.init({
+    apiUrl: "http://localhost:8000"
+  });
+</script>
+```
+
+---
+
+# Screenshots
+
+## Dashboard Overview
+
+*Add screenshot here*
+
+## Sessions View
+
+*Add screenshot here*
+
+## Heatmap View
+
+*Add screenshot here*
+
+---
+
+# Future Improvements
+
+* Real-time websocket updates
+* Advanced analytics aggregation
+* Session replay
+* Funnel analysis
+* Authentication and multi-user support
+* Custom dashboard widgets
+* Event filtering and search
+
+---
+
+# Author
+
+## Aashita Dash
+
+* GitHub: [https://github.com/AashitaDash](https://github.com/AashitaDash)
+* LinkedIn: [https://www.linkedin.com/in/aashita-dash-b4153928a/](https://www.linkedin.com/in/aashita-dash-b4153928a/)
+
+---
+
+# License
+
+MIT License
